@@ -1,0 +1,25 @@
+import os
+PATH = r'D:\PYTHON\爬虫代码\selenium'
+
+
+def showAllFile(path, keyword):
+    # 先遍历本文件夹下面的所有文件，将符合后缀的文件打印出来
+    # print([x for x in os.listdir(path) if os.path.isfile(x) and os.path.splitext(x)[1] == keyword])
+    # 遍历所有文件
+    # 当碰到文件包含指定字符串时，则直接打印
+    # 当碰到文件夹的时候，继续钻取进去
+    # 其他则什么也不做
+
+    for x in os.listdir(path):
+        # if os.path.isfile(os.path.join(path, x)) and os.path.splitext(x)[1] == keyword:
+        if os.path.isfile(os.path.join(path, x)) and x.find(keyword) != -1:
+            print(os.path.join(path, x).replace(PATH, '.'))
+        elif os.path.isdir(x):
+            showAllFile(os.path.join(path, x), keyword)
+        else:
+            pass
+
+
+if __name__ == '__main__':
+
+    showAllFile(PATH, 'luban')
