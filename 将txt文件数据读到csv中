@@ -1,0 +1,25 @@
+# 先定义一个数组
+arr_xm = []
+arr_xb = []
+arr = ['姓名,性别\n']            
+
+# 将txt中的数据保存到数组中
+with open(r'D:\PYTHON\basicSkill\testread.txt', 'r') as f:
+    # print(f.readlines())
+    for i in f.readlines():
+        if(i[0:2] == '姓名'):
+            arr_xm.append(i.replace('姓名:', ''))
+        else:
+            arr_xb.append(i.replace('性别:', ''))
+
+print(arr_xm)
+print(arr_xb)
+
+for i, v in enumerate(arr_xm):
+    arr.append((v + ',' + arr_xb[i]).replace('\n,', ','))
+
+print(arr)
+
+# 将数组中的内容读取到csv里
+with open(r'D:\PYTHON\basicSkill\testwrite.csv', 'w') as f:
+    f.writelines(arr)
