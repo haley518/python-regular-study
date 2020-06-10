@@ -14,7 +14,7 @@ def showAllFile(path, keyword):
         # if os.path.isfile(os.path.join(path, x)) and os.path.splitext(x)[1] == keyword:
         if os.path.isfile(os.path.join(path, x)) and x.find(keyword) != -1:
             print(os.path.join(path, x).replace(PATH, '.'))
-        elif os.path.isdir(x):
+        elif os.path.isdir(os.path.join(path, x)):
             showAllFile(os.path.join(path, x), keyword)
         else:
             pass
